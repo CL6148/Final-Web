@@ -1,0 +1,45 @@
+<%- include ("./partials/header") %>
+
+<main role="main" class="container">
+    <div class="row">
+      <!-- <div class="container">
+        <a href="/"><button type="submit" class="btn btn-primary"> Return Home </button></a>
+      </div> -->
+      <div class="col-md-8 blog-main">
+        <h1> Edit Plant </h1>
+        <hr> </hr>
+        <div class = "containerFill">
+        <form action="/edit/<%= plant._id%>" method="POST">
+          <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="Name" value="<%= plant.name%>">
+          </div>
+          <div class="form-group">
+            <input type="text" name="location" class="form-control" placeholder="Location" value="<%= plant.location%>">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="manager" placeholder="Manager" value="<%= plant.manager%>">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="id" placeholder="Id" value="<%= plant.id%>">
+          </div>
+          <button type="submit" class="btn btn-info"> Edit Post </button>
+        </form>
+      </div>
+    </div>
+
+    <style>
+      .row{
+        padding-top: 60px;
+        padding-left: 150px;
+        margin-left: 70px;
+
+      }
+  
+  
+    </style>
+
+  </main>
+
+
+
+<!-- <%- include ("./partials/footer") %> 

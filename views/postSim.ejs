@@ -1,0 +1,28 @@
+<%- include ("./partials/header") %>
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <form action="/postSim" method="POST">
+        <div class="form-group">
+          <input type="text" class="form-control" name="name" placeholder="Name">
+        </div>
+          <input type="text" name="id" class="form-control" placeholder="Id">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <style>
+    .row{
+      padding-top: 50px;
+      padding-left: 150px;
+      margin-left: 210px;
+
+    }
+  </style>
+</main>
+
+
+<!-- <%- include ("./partials/footer") %> 

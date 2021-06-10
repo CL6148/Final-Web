@@ -1,0 +1,46 @@
+<%- include ("./partials/header") %>
+
+<main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8 blog-main">
+        <!-- <div class="container">
+            <a href="/"><button type="submit" class="btn btn-primary"> Return Home </button></a>
+          </div> -->
+        <% if (post.length==0) { %>
+        <div class="blog-post">
+          <h2 class="blog-post-title">There are no Posts available at the moment</h2>
+        </div>
+        <%    }   else {  for (var i = 0; i < plant.length; i++) { var counter = 0; for (var j=0; j < post.length; j++) {   %>
+            <% if (plant[i].name === post[j].name) { counter=counter+1; }} %>
+            <div class="blog-post">
+                <h3 class="blog-post-title">Safe-Distance Violation detections @ Plant <%=plant[i].name %>: <%=counter%></h3>
+            </div>
+        <% }} %>
+            <div class="blog-post">
+                <h3 class="blog-post-title">Safe-Distance Violation Summary</h3>
+           <div class = "imgBar">
+                <img src="https://wcs.smartdraw.com/chart/img/basic-bar-graph.png?bn=15100111790" alt="bar graph">
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <style>
+      h3{
+          white-space: nowrap;
+          padding-left: 50px;
+          padding-top: 60px ;
+          margin-left: 210px;
+
+      }
+
+      .imgBar{
+          padding-left: 200px;
+          padding-top: 50px ;
+      }
+      
+  </style>
+  </main>
+
+
+<!-- <%- include ("./partials/footer") %> 

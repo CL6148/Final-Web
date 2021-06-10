@@ -1,0 +1,44 @@
+<%- include ("./partials/header") %>
+
+
+ <!--<div class="container">
+    <a href ="/newPlant"><button type="button" class="btn btn-primary">Add New Plant</button></a>
+  </div> -->
+
+<main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8 blog-main">
+        
+        <% if (plant.length==0) { %>
+        <div class="blog-post">
+          <h2 class="blog-post-title">There are no Plants available at the moment</h2>
+        </div>
+        <%    }   else {  for (var i = 0; i < plant.length; i++) { %>
+          <div class="blog-post">
+            <h2 class="blog-post-title"><a href="view/<%=plant[i]._id%>">Plant - <%=plant[i].name %></a> </h2>
+            <p class="blog-post-meta">Location: <%= plant[i].location %></p>
+            <p class="blog-post-meta">Manager: <%= plant[i].manager %></p>
+            <p class="blog-post-meta">Id: <%= plant[i].id %></p>
+            <a class = "btn btn-danger" href ="/delete/<%= plant[i]._id %>"> Delete </a>
+            <a class = "btn btn-info" href ="/edit/<%= plant[i]._id %>"> Edit </a>
+          </div>
+        <% }} %>
+  
+  
+  
+      </div>
+    </div>
+
+        <style>
+          .row{
+            padding-top: 50px;
+            padding-left: 150px;
+            margin-left: 100px;
+
+          }
+        </style>
+  </main>
+
+
+
+<!-- <%- include ("./partials/footer") %> 

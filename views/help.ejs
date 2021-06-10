@@ -1,0 +1,69 @@
+<%- include ("./partials/header") %>
+
+<main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8 blog-main">
+        <!-- <div class="container">
+            <a href="/"><button type="submit" class="btn btn-primary"> Return Home </button></a>
+        </div> -->
+        <div class="blog-post">
+            <h3 class="blog-post-title">FAQ</h3>
+            <ul class="bulletsInfo">
+                <li>
+                    <p class="blog-post-meta"><b>Is the video in each view page live?</b></p>
+                    <p class="blog-post-meta">Yes, indeed you are viewing a live stream of each plant within the index page</p>
+                </li>
+                <li>
+                    <p class="blog-post-meta"><b>What are the metrics shown in the monitor page?</b></p>
+                    <p class="blog-post-meta">Every plant indicates how many Safe-Distance Violations were detected. After that a bar graph illustrating all of the results is shown.</p>
+                </li>
+            </ul>
+        </div>
+        <form action="/help" method="POST">
+            <h3 class="blog-post-title">Send us your message!</h3>
+            <div class="fill">
+            <div class="blog-post">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="contact" placeholder="Contact">
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="post_data" cols="50" rows="10"
+                  placeholder="Add your message">
+                </textarea>
+            </div>
+            <button type="submit" class="btn btn-primary"> Send Email </button>
+            <br> </br>
+        </form>
+    </div>
+      </div>
+    </div>
+
+    <style>
+        h3{
+            white-space: nowrap;
+            padding-left: 50px;
+            padding-top: 50px ;
+            margin-left: 210px;
+        }
+
+        ul.bulletsInfo{
+            padding-left: 240px;
+            padding-top: 20px ;
+            white-space:nowrap;
+            margin-left: 40px;
+
+        }
+        
+        .fill{
+            padding-top: 20px;
+            padding-left: 190px;
+            margin-left: 90px;
+
+        }
+        
+    </style>
+  </main>
+
+
+<!-- <%- include ("./partials/footer") %> 

@@ -1,0 +1,43 @@
+<%- include ("./partials/header") %>
+
+<main role="main" class="container">
+    <div class="row">
+        <!-- <div class="container">
+          <a href="/"><button type="submit" class="btn btn-primary"> Return Home </button></a>
+        </div> -->
+      <div class="col-md-8 blog-main">
+        <h1> Are you sure you want to delete this plant from the page?</h1>
+        <hr> </hr>
+        <form action="/delete/<%= plant._id%>" method="POST">
+          <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="Name" value="<%= plant.name%>" disabled>
+          </div>
+          <div class="form-group">
+            <input type="text" name="location" class="form-control" placeholder="Location" value="<%= plant.location%>" disabled>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="manager" placeholder="Manager" value="<%= plant.manager%>" disabled>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="id" placeholder="Id" value="<%= plant.id%>" disabled>
+          </div>
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+
+    <style>
+      .row{
+        padding-top: 50px;
+        padding-left: 150px;
+        margin-right: -20%;
+        white-space:normal;
+        margin-left: 70px;
+
+      }
+    </style>
+  </main>
+
+
+
+<!-- <%- include ("./partials/footer") %> 
