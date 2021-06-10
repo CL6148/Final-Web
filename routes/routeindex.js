@@ -19,6 +19,20 @@ const plants = require('../model/plants');
 const posts = require('../model/posts');
 
 const users = [];
+function checkAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+      return next()
+  }
+
+  res.redirect('login')
+}
+function notAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+      return res.redirect('/')
+  }
+
+  next()
+}
 
 router.get('/', checkAuthenticated, async function(req,res){
   var plant = await plants.find();
