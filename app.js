@@ -46,24 +46,6 @@ app.use(passport.session());
 // routes
 app.use('/', indexRoutes);
 
-function checkAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next()
-    }
-
-    res.redirect('login')
-}
-
-function notAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return res.redirect('/')
-    }
-
-    next()
-}
-
 app.listen(app.get('port'), () =>{
     console.log(`server on port ${app.get('port')}`);
 })
-
-
