@@ -20,35 +20,35 @@ const posts = require('../model/posts');
 
 const users = [];
 
-router.get('/', async function(req,res){
-    var plant = await plants.find();
+router.get('/', checkAuthenticated, async function(req,res){
+  var plant = await plants.find();
   
-    res.render('index', {plant});
+  res.render('index', {plant});
   });
 
-router.get('/monitor', async function(req,res){
+router.get('/monitor', checkAuthenticated, async function(req,res){
   var post = await posts.find();
   var plant = await plants.find();
 
   res.render('monitor', {post, plant});
 });
 
-router.get('/postSim', async (req,res) =>{
+router.get('/postSim', checkAuthenticated, async (req,res) =>{
   res.render('postSim',{title: 'newPost'});
 });
 
-router.post('/postSim', async (req,res) =>{
+router.post('/postSim', checkAuthenticated, async (req,res) =>{
   console.log(req.body);
   var post = new posts(req.body);
   await post.save();
   res.redirect("/");
 });
 
-router.get('/newPlant', async (req,res) =>{
+router.get('/newPlant', checkAuthenticated, async (req,res) =>{
   res.render('newPlant',{title: 'newPlant'});
 });
 
-router.post('/newPlant', async (req,res) =>{
+router.post('/newPlant', checkAuthenticated, async (req,res) =>{
  
   console.log(req.body);
   var plant = new plants(req.body);
@@ -57,46 +57,46 @@ router.post('/newPlant', async (req,res) =>{
 
 });
 
-router.get('/help', (req,res) =>{
+router.get('/help', checkAuthenticated, (req,res) =>{
   res.render('help');
 });
 
-router.post('/help', async (req,res) =>{
+router.post('/help', checkAuthenticated, async (req,res) =>{
   res.redirect("/");
 });
 
-router.get('/info', (req,res) =>{
+router.get('/info', checkAuthenticated, (req,res) =>{
   res.render('info');
 });
 
-router.get('/edit/:id', async(req,res) => {
+router.get('/edit/:id', checkAuthenticated, async(req,res) => {
   var plant = await plants.findById(req.params.id);
   res.render('edit', {plant});
 });
 
-router.post('/edit/:id', async(req,res) => {
+router.post('/edit/:id', checkAuthenticated, async(req,res) => {
   var id = req.params.id;
   await plants.update({_id: id}, req.body);
   res.redirect("/");
 });
 
-router.get('/delete/:id', async(req,res) => {
+router.get('/delete/:id', checkAuthenticated, async(req,res) => {
     var plant = await plants.findById(req.params.id);
     res.render('delete', {plant});
   });
   
-router.post('/delete/:id', async(req,res) => {
+router.post('/delete/:id', checkAuthenticated, async(req,res) => {
   var id = req.params.id;
   await plants.deleteOne({_id:id})
   res.redirect("/");
 });
 
-router.get('/view/:id', async(req,res) => {
+router.get('/view/:id', checkAuthenticated, async(req,res) => {
   var plant = await plants.findById(req.params.id);
   res.render('view', {plant});
 });
 
-router.get('/video', function(req, res) {
+router.get('/video', checkAuthenticated, function(req, res) {
   const path = 'public/assets/1.mp4'
   const stat = fs.statSync(path)
   const fileSize = stat.size
@@ -135,21 +135,21 @@ router.get('/video', function(req, res) {
   }
 });
 
-router.get('/login', (reg, res) => {
+router.get('/login', notAuthenticated, (reg, res) => {
   res.render('login.ejs')
 });
 
-router.post('/login', passport.authenticate('local', {
+router.post('/login', notAuthenticated, passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',
   failureFlash: true
 }));
 
-router.get('/register', (req, res) => {
+router.get('/register', notAuthenticated, (req, res) => {
   res.render('register.ejs')
 });
 
-router.post('/register', async (req, res) => {
+router.post('/register', notAuthenticated, async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
     users.push({
